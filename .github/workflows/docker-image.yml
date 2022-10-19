@@ -1,0 +1,16 @@
+name: Build Docker Image - XUI
+on:
+  workflow_dispatch: 
+  watch:
+    types: [started]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Building Docker Image - PUBLIC
+        uses: elgohr/Publish-Docker-Github-Action@v4
+        with:
+          name: '${{ secrets.DOCKER_PATH }}'
+          username: '${{ secrets.DOCKER_USERNAME }}'
+          password: '${{ secrets.DOCKER_PASSWORD }}'
