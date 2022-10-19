@@ -14,7 +14,7 @@ COPY config/ /
 #COPY stupid.sh /stupid.sh 
 #COPY etc/fb.sh /tmp/fb.sh
 RUN apt-get update && apt-get install -y --no-install-recommends -y ca-certificates && \
-    apt-get install wget && \
+#    apt-get install wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     wget -O xui.tar.gz $FL && \
     chmod +x start.sh && \
