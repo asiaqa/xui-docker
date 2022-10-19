@@ -19,15 +19,17 @@ ENV AUUID="143a9766-4477-5b16-ad4e-5f8020b42f7c" \
  SSS="G5oBIXH2JvLNw97XOCkCTw==" \
  TZ="Asia/Chongqing" \
  AGF="https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.107.11/AdGuardHome_linux_amd64.tar.gz" \
- FRPF="https://github.com/fatedier/frp/releases/download/v0.38.0/frp_0.38.0_linux_amd64.tar.gz"
+ FRPF="https://github.com/fatedier/frp/releases/download/v0.38.0/frp_0.38.0_linux_amd64.tar.gz" \
+ SH_S=0 \
+ SH_PASS="password" \
+ TUNNEL_TOKEN=""
 ARG SH_USER="mp"
 ARG SH_PASS="password"
-ENV SH_S=0
-ENV TUNNEL_TOKEN=""
 # Password has to be no speical string, such as '/', '\'. command: openssl rand -base64 16
 ARG XRAY_LINK="https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip"
 #ARG XRAY_LINK="https://github.com/XTLS/Xray-core/releases/download/v1.5.10/Xray-linux-64.zip"
 ENV FRP_S=0
+COPY etc/Caddyfile /caddy/Caddyfile
 COPY etc/Caddyfile /etc/caddy/Caddyfile
 COPY etc/AdGuardHome.yaml /tmp/AdGuardHome.yaml 
 COPY etc/x.json /tmp/x.json 
