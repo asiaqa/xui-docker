@@ -15,7 +15,7 @@ COPY config/ /
 #COPY etc/fb.sh /tmp/fb.sh
 RUN apk update && \
     apk add --no-cache ca-certificates caddy wget su-exec ttyd tzdata && \
-    apk add --no-cache nano net-tools openssh busybox-suid bind-tools && \
+    apk add --no-cache bash nano net-tools openssh busybox-suid bind-tools && \
     rm -rf /var/cache/apk/* && \
     cp /usr/share/zoneinfo/Asia/Chongqing /etc/localtime && \
     wget -O xui.tar.gz $FL && \
