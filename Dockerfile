@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM debian:11-slim
 #FROM node:alpine
 #ENV USER=ezjc
 ENV FL="https://github.com/FranzKafkaYu/x-ui/releases/download/0.3.3.16-0814/x-ui-linux-amd64.tar.gz" \
@@ -13,11 +13,9 @@ COPY config/ /
 #COPY etc/config.ini /tmp/config.ini 
 #COPY stupid.sh /stupid.sh 
 #COPY etc/fb.sh /tmp/fb.sh
-RUN apk update && \
-    apk add --no-cache ca-certificates caddy wget su-exec ttyd tzdata && \
-    apk add --no-cache bash nano net-tools openssh busybox-suid bind-tools && \
-    rm -rf /var/cache/apk/* && \
-    cp /usr/share/zoneinfo/Asia/Chongqing /etc/localtime && \
+RUN apt-get update && apt-get install -y --no-install-recommends -y ca-certificates && \
+    apt-get install wget && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     wget -O xui.tar.gz $FL && \
     chmod +x start.sh && \
     tar -xvzf xui.tar.gz && rm *.tar.gz && mkdir -p /etc/x-ui/ && cp -a /x-ui/. /etc/x-ui/ && rm -rf x-ui
