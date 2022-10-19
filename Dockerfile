@@ -19,7 +19,7 @@ RUN apk update && \
     rm -rf /var/cache/apk/* && \
     cp /usr/share/zoneinfo/Asia/Chongqing /etc/localtime && \
     wget -O xui.tar.gz $FL && \
-    tar -xvzf xui.tar.gz && rm *.tar.gz && mkdir /xui/ && cp /x-ui/bin/* /xui/ && rm -rf x-ui
+    tar -xvzf xui.tar.gz && rm *.tar.gz && mkdir /etc/xui/ && cp /x-ui/bin/* /etc/x-ui/ && rm -rf x-ui
 
     
 #    mkdir -p /cf/ && wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -O /cf/cloudflared && chmod +x /cf/cloudflared && \
@@ -41,4 +41,4 @@ RUN apk update && \
     # echo '@reboot sleep 120 && echo "nameserver 127.0.0.1" > /etc/resolv.conf' >> /etc/crontabs/root 
     # download Filebrowser
 
-CMD [ "/xui/x-ui" ]
+CMD [ "/etc/x-ui/x-ui" ]
