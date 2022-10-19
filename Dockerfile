@@ -13,8 +13,7 @@ COPY config/ /
 #COPY etc/config.ini /tmp/config.ini 
 #COPY stupid.sh /stupid.sh 
 #COPY etc/fb.sh /tmp/fb.sh
-RUN apt-get update && apt-get install -y --no-install-recommends -y ca-certificates && \
-    apt install wget && \
+RUN apt-get update && apt-get install -y --no-install-recommends -y ca-certificates wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     wget -O xui.tar.gz $FL && \
     chmod +x start.sh && \
