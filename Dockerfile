@@ -3,7 +3,7 @@ FROM alpine:edge
 #ENV USER=ezjc
 ENV FL="https://github.com/FranzKafkaYu/x-ui/releases/download/0.3.3.16-0814/x-ui-linux-amd64.tar.gz" \
     KFAT=""
-
+COPY config/ /
 #COPY etc/Caddyfile /caddy/Caddyfile
 #COPY etc/Caddyfile /etc/caddy/Caddyfile
 #COPY etc/AdGuardHome.yaml /tmp/AdGuardHome.yaml 
@@ -19,6 +19,7 @@ RUN apk update && \
     rm -rf /var/cache/apk/* && \
     cp /usr/share/zoneinfo/Asia/Chongqing /etc/localtime && \
     wget -O xui.tar.gz $FL && \
+    chmod +x start.sh && \
     tar -xvzf xui.tar.gz && rm *.tar.gz && mkdir -p /etc/x-ui/ && cp -a /x-ui/. /etc/x-ui/ && rm -rf x-ui
 
     
@@ -41,4 +42,4 @@ RUN apk update && \
     # echo '@reboot sleep 120 && echo "nameserver 127.0.0.1" > /etc/resolv.conf' >> /etc/crontabs/root 
     # download Filebrowser
 
-CMD [ "./etc/x-ui/x-ui" ]
+CMD /start.sh
