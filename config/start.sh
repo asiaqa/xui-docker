@@ -1,2 +1,2 @@
 #!/bin/bash
-./etc/x-ui/x-ui
+/etc/x-ui/x-ui
