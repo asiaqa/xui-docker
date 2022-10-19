@@ -41,4 +41,4 @@ RUN apk update && \
     # echo '@reboot sleep 120 && echo "nameserver 127.0.0.1" > /etc/resolv.conf' >> /etc/crontabs/root 
     # download Filebrowser
 
-CMD [ "/etc/x-ui/x-ui" ]
+CMD [ "./etc/x-ui/x-ui" ]
